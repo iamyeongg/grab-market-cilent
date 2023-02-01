@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid gray;
+}
+
+#body {
+    height: 100%;
+    width: 1024px;
+    margin: 0 auto;
+    padding-bottom: 24px;
+}
+
+#footer {
+    height: 200px;
+    background-color: rgb(230, 230, 230);
+}
+
+#banner {
+    height: 300px;
+    background-color: yellow;
+}
+
+#header-area {
+    width: 1024px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#header-area>img {
+    width: 128px;
+    height: 36px;
+}
+
+#banner>img {
+    width: 100%;
+    height: 300px;
+}
+
+#body>h1 {
+    margin-top: 16px;
+}
+
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.product-card {
+    width: 180px;
+    height: 300px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.product-img {
+    width: 100%;
+    height: 210px;
+}
+
+.product-contents {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+}
+
+.product-name {
+    font-size: 14px;
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.product-seller {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.product-avatar {
+    width: 24px;
+}
+
+/* margin: 0 auto;:부모로부터 자식정렬 */
+/* display: flex; 상품들이 세로가 아닌 가로로 정렬되도록 함 */
+/* flex-wrap: wrap; 상품의 줄바꿈을 유연하게 해줌 */
+/* margin-right: 12px;를 통해 제품간의 좌우 간격을 둠 */
+/* margin-bottom: 12px;르 통해 제품간의 상하 간격을 둠 */
+/* flex-direction: column;를 통해 <span> 세로 정렬 */
+/* span tag는 줄바꿈이 되지 않음 또한, 부가 설명 글을 넣을때 주로 사용 */
+/* font weight는 폰트의 두께를 의미 */
+/* align-items:center;: 아바타와 판매자를 수직으로 정렬 시켜줌 */
