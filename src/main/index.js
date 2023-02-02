@@ -3,14 +3,20 @@ import './index.css'
 import axios from 'axios';
 
 function MainPage() {
+    const [products, setProducts] = React.useState([]);
     // 목서버를 get으로 가져옴
-    axios
-        .get("https://b552ca02-e190-4618-87df-e926921932fb.mock.pstmn.io/products")
-        .then(function (result) {
-            console.log(result);
-        }).catch(function (error) {
-            console.error('에러발생', error);
-        });
+    React.useEffect(function () {
+        axios
+            .get("https://b552ca02-e190-4618-87df-e926921932fb.mock.pstmn.io/products")
+            .then(function (result) {
+                const products = result.data.products;
+                setProducts(products);
+            })
+            .catch(function (error) {
+                console.error('에러발생', error);
+            });
+    }, []);
+    // []로 (네트워크 통신) rendering을 한번하여 products를 불러옴
     return (
         <div>
             <div id="header">
@@ -24,25 +30,32 @@ function MainPage() {
                 </div>
                 <h1>판매되는 상품들</h1>
                 <div id="product-list">
-                    <div className='product-card'>
-                        <div>
-                            <img className='product-img' src="images/products/keyboard1.jpg" />
-                        </div>
-                        <div className='product-contents'>
-                            <span className='prodcuct-name'>
-                                키보드
-                            </span>
-                            <span className='product-price'>
-                                50000원
-                            </span>
-                            <div className='product-seller'>
-                                <img className='product-avatar' src="images/icon/avatar.png" />
-                                <sapn>
-                                    그랩
-                                </sapn>
-                            </div>
-                        </div>
-                    </div>
+                    {
+                        products.map(function (product, index) {
+                            return (
+                                <div className='product-card'>
+                                    <div>
+                                        <img
+                                            className='product-img'
+                                            src={product.imageUrl}
+                                        />
+                                    </div>
+                                    <div className='product-contents'>
+                                        <span className='prodcuct-name'>{product.name}</span>
+                                        <span className='product-price'>{product.price}원</span>
+                                        <div className='product-seller'>
+                                            <img
+                                                className='product-avatar'
+                                                src="images/icons/avatar.png"
+                                            />
+                                            <span> {product.seller}</span>
+                                        </div>
+                                    </div>
+                                </div>);
+                        })
+                    }
+
+
                 </div>
             </div>
             <div id="footer"></div>
