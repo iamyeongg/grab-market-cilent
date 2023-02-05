@@ -42,7 +42,7 @@ body,
 
 #footer {
   height: 200px;
-  background-color: rgb(230, 230, 230);
+
 }
 
 /* height의 기준은 부모로 부터 시작 되기에 모든 태그에 height를 100%로 지정한다  */
