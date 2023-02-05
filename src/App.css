@@ -8,7 +8,10 @@
   width: 1024px;
   height: 100%;
   display: flex;
+  /* display: flex: 수평정렬 / justify-content:아이탬을 올바르게 배치*/
   align-items: center;
+  justify-content: space-between;
+  /* ^ 그랩 마켓 로고와 상품 업로드 버튼을 양쪽 끝에 배치 */
 }
 
 #header-area img {
