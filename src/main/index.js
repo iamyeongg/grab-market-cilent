@@ -8,8 +8,7 @@ function MainPage() {
     // 목서버를 get으로 가져옴
     React.useEffect(function () {
         axios
-            .get("https://39f35dc9-650b-42e1-b46b-44fe25623693.mock.pstmn.io/products")
-
+            .get("http://localhost:8080/products")
             .then(function (result) {
                 const products = result.data.products;
                 setProducts(products);
