@@ -7,45 +7,44 @@
     justify-content:center; : 가로 정렬 */
 }
 
-#image-box >img{
-    height:100%
+#image-box>img {
+    height: 100%
 }
 
-#profile-box{
+#profile-box {
     padding: 16px;
     margin-top: 8px;
     border-bottom: 1px soild #e9ecef;
-    display:flex;
-    align-items:center;
+    display: flex;
+    align-items: center;
 }
 
-#profile-box>img{
-    width:50px;
-    height:50px;
+#profile-box>img {
+    width: 50px;
+    height: 50px;
 }
 
-#profile-box>span{
-    font-size:15px;
-    margin-left:8px;
+#profile-box>span {
+    font-size: 15px;
+    margin-left: 8px;
     font-weight: 600;
 }
 
-#name{
+#name {
     font-size: 20px;
     font-weight: 400;
 }
 
-#price{
+#price {
     font-size: 16px;
-    font-weight: 600;  
+    font-weight: 600;
 }
 
-#creatAt{
+#creatAt {
     font-size: 12px;
-    color: rgb(204,204,204);
+    color: rgb(204, 204, 204);
 }
 
-#description{
- margin: 16px;
+#description {
+    margin: 16px;
 }
-
