@@ -1,7 +1,7 @@
-import React from 'react';
-import './index.css'
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React from "react";
+import "./index.css";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { API_URL } from "../config/constants.js";
@@ -12,7 +12,6 @@ dayjs.extend(relativeTime);
 function MainPage() {
     const [products, setProducts] = React.useState([]);
     const [banners, setBanners] = React.useState([]);
-    // 목서버를 get으로 가져옴
     React.useEffect(function () {
         axios
             .get(`${API_URL}/products`)
@@ -21,8 +20,9 @@ function MainPage() {
                 setProducts(products);
             })
             .catch(function (error) {
-                console.error('에러발생', error);
+                console.error("에러 발생 : ", error);
             });
+
         axios
             .get(`${API_URL}/banners`)
             .then((result) => {
@@ -33,8 +33,6 @@ function MainPage() {
                 console.error("에러 발생 : ", error);
             });
     }, []);
-
-    // []로 (네트워크 통신) rendering을 한번하여 products를 불러옴
 
     return (
         <div>
@@ -51,42 +49,44 @@ function MainPage() {
             </Carousel>
             <h1 id="product-headline">판매되는 상품들</h1>
             <div id="product-list">
-                {
-                    products.map(function (product, index) {
-                        return (
-                            <div className='product-card'>
-                                <Link className='product-link' to={`/products/${product.id}`}>
-                                    <div>
-                                        <img
-                                            className='product-img'
-                                            src={`${API_URL}/${product.imageUrl}`}
-                                        />
-                                    </div>
-                                    <div className='product-contents'>
-                                        <span className='prodcuct-name'>{product.name}</span>
-                                        <span className='product-price'>{product.price}원</span>
-                                        <div className="product-footer">
-                                            <div className="product-seller">
-                                                <img
-                                                    className="product-avatar"
-                                                    src="images/icons/avatar.png"
-                                                />
-                                                <span>{product.seller}</span>
-                                            </div>
-                                            <span className="product-date">
-                                                {dayjs(product.createdAt).fromNow()}
-                                            </span>
+                {products.map(function (product, index) {
+                    return (
+                        <div className="product-card">
+                            {product.soldout === 1 && <div className="product-blur" />}
+                            <Link
+                                style={{ color: "inherit" }}
+                                className="product-link"
+                                to={`/products/${product.id}`}
+                            >
+                                <div>
+                                    <img
+                                        className="product-img"
+                                        src={`${API_URL}/${product.imageUrl}`}
+                                    />
+                                </div>
+                                <div className="product-contents">
+                                    <span className="product-name">{product.name}</span>
+                                    <span className="product-price">{product.price}원</span>
+                                    <div className="product-footer">
+                                        <div className="product-seller">
+                                            <img
+                                                className="product-avatar"
+                                                src="images/icons/avatar.png"
+                                            />
+                                            <span>{product.seller}</span>
                                         </div>
+                                        <span className="product-date">
+                                            {dayjs(product.createdAt).fromNow()}
+                                        </span>
                                     </div>
-                                </Link>
-                            </div>);
-                    })
-                }
-
-
+                                </div>
+                            </Link>
+                        </div>
+                    );
+                })}
             </div>
-
         </div>
-    )
+    );
 }
+
 export default MainPage;
